@@ -9,5 +9,5 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   update() {
     this.setInteractive()
         .on('pointerdown', () => console.log("enemy shoot!"))
-  }
+  } 
 }
