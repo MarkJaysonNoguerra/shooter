@@ -4,8 +4,10 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('bg', 'assets/img/bg.png');
     this.load.image('phaser-logo', 'assets/img/phaser-logo.png')
     this.load.image('crosshair', 'assets/img/crosshair.png')
+    this.load.image('enemy', 'assets/img/enemy.png', { frameWidth: 100, frameHeight : 100});
   }
 
   create() {
