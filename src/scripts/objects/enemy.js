@@ -9,8 +9,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     scene.tweens.add({
       targets: this,
       props: {
-          x: { value: 1000, duration: 4000, flipX: true },
-          y: { value: 800, duration: 8000,  },
+          x: { value: Math.random() * window.innerWidth, duration: 5000, flipX: true },
+          y: { value: Math.random() * window.innerHeight, duration: 6000,  },
       },
       ease: 'Sine.easeInOut',
       yoyo: true,
