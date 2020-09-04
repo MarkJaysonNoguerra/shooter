@@ -4,6 +4,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, 'enemy')
     scene.add.existing(this)
+    this.setScale(0.25)
     // scene.add.image(0, 80, 'enemy', 0);
 
     scene.tweens.add({
@@ -19,9 +20,13 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
 
     
   }
-  update() {
+  update(score, enemy) {
     this.setInteractive()
-        .on('pointerdown', () => this.setVisible(false))
+        .on('pointerdown', () => {
+          this.destroy();
+          enemy.getChildren().pop();
+          score.update();
+        })
   } 
 
 }

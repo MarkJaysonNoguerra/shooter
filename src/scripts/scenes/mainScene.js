@@ -7,11 +7,24 @@ export default class MainScene extends Phaser.Scene {
   enemies
   crosshair
   index = 0;
+  score = 0;
+  
   constructor() {
     super({ key: 'MainScene' })
   }
    
   create() {
+
+    //  Our Text object to display the Score
+    // let info = this.add.text(10, 10, 'Score: 0', { font: '48px Arial', fill: '#ffffff' });
+    //  Listen for events from it
+    // this.events.on('addScore', function () {
+
+    //   this.score += 10;
+
+    //   info.setText('Score: ' + this.score);
+
+    // }, this);
 
     // this.add.image(window.innerWidth / 2, window.innerHeight / 2, 'bg');
     let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'bg');
@@ -26,7 +39,11 @@ export default class MainScene extends Phaser.Scene {
   }
 
   update() {
-    this.fpsText.update()
+    
+    if(this.enemies.getChildren().length == 0){
+      this.index = 0;
+    }
+    
     if(this.index < 10){
       this.createEnemies();
     }
@@ -36,8 +53,9 @@ export default class MainScene extends Phaser.Scene {
 
   createEnemies(){
     let enemy = new Enemy(this, Math.random() * this.cameras.main.width, Math.random() * this.cameras.main.displayHeight);
-    enemy.update()
+    enemy.update(this.fpsText, this.enemies);
     this.enemies.create(enemy);
+    // console.log(this.enemies.getChildren());
     // this.enemies.update();
   }
   
