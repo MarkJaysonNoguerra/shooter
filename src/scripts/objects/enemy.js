@@ -1,7 +1,7 @@
 export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   enemy
 
-  constructor(scene, x, y) {
+  constructor(scene, x, y, speed) {
     super(scene, x, y, 'enemy')
     scene.add.existing(this)
     this.setScale(0.25)
@@ -10,8 +10,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     scene.tweens.add({
       targets: this,
       props: {
-          x: { value: Math.random() * window.innerWidth, duration: 5000, flipX: true },
-          y: { value: Math.random() * window.innerHeight, duration: 6000,  },
+          x: { value: Math.random() * window.innerWidth, duration: 5000 - speed, flipX: true },
+          y: { value: Math.random() * window.innerHeight, duration: 6000 - speed, flipY: true },
       },
       ease: 'Sine.easeInOut',
       yoyo: true,
