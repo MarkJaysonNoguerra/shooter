@@ -2,6 +2,8 @@ import Crosshair from '../objects/crosshair'
 import Score from '../objects/score'
 import Enemy from '../objects/enemy'
 import Countdown from '../objects/countDown'
+import Beta from '../objects/beta'
+import Gamma from '../objects/gamma'
 
 export default class MainScene extends Phaser.Scene {
   enemies
@@ -28,6 +30,8 @@ export default class MainScene extends Phaser.Scene {
     this.enemies = this.add.group();
     this.crosshair = new Crosshair(this, this.cameras.main.width / 2, this.cameras.main.displayHeight /2)
     this.countDown = new Countdown(this);
+    this.beta = new Beta(this);
+    this.gamma = new Gamma(this);
     
   }
 
@@ -52,6 +56,7 @@ export default class MainScene extends Phaser.Scene {
       this.index++;
       this.createEnemies();
     }
+
 
   }
 
