@@ -1,19 +1,12 @@
 export default class Countdown extends Phaser.GameObjects.Text {
     initialTime = 15;
     constructor(scene) {
-      super(scene, (window.innerWidth*.5) - 10, 0, '', { color: 'white', fontSize: '28px' })
-      scene.add.existing(this)
-    //   this.setOrigin(0) 
+      super(scene, (window.innerWidth*.5) - 10, 0, '', { color: 'white', fontSize: '28px' });
+      scene.add.existing(this);
       this.setText(this.formatTime(this.initialTime));
       scene.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
-
     }
   
-    // update() {
-    //   this.score++;
-    //   this.setText(`Score: ${this.score}`)
-    // }
-
     formatTime(seconds){
         // Minutes
         var minutes = Math.floor(seconds/60);
